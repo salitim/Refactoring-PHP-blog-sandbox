@@ -9,12 +9,14 @@
  */
 require_once("Libraries/database.php");
 require_once("Libraries/utilis.php");
+require_once('Libraries/models/Article.php');
 
-
+$model = new Article();
 /**
  * 2. Récupération des articles
  */
-$articles = findAll();
+
+$articles = $model->findAll();
 
 /**
  * 3. Affichage

@@ -12,6 +12,9 @@
  */
 require_once("Libraries/database.php");
 require_once("Libraries/utilis.php");
+require_once("Libraries/models/Comment.php");
+require_once("Libraries/models/Article.php");
+
 /**
  * 1. Récupération du param "id" et vérification de celui-ci
  */
@@ -31,12 +34,14 @@ if (!$article_id) {
 /**
 	 * 3. Récupération de l'article en question
 	 */
-$article = findArticle($article_id);
+$articleModel = new Article();
+$article = $articleModel->find($article_id);
 
 /**
  * 4. Récupération des commentaires de l'article en question
  */
-$commentaires = findAllComments($article_id);
+$commentaireModel = new Comment();
+$commentaires = $commentaireModel->findAll($article_id);
 
 /**
  * 5. On affiche 
