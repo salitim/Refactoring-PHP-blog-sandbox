@@ -14,7 +14,11 @@
  * Et enfin on pourra rediriger l'utilisateur vers l'article en question
  */
 require_once("Libraries/database.php");
+require_once("Libraries/models/Comment.php");
+require_once("Libraries/models/Article.php");
 
+$modelComment = new Comment();
+$modelArticle = new Article();
 /**
  * 1. On vérifie que les données ont bien été envoyées en POST
  * D'abord, on récupère les informations à partir du POST
@@ -46,7 +50,7 @@ if (!$author || !$article_id || !$content) {
 }
 
 
-$article = findArticle($article_id);
+$article = $modelArticle->find($article_id);
 
 // Si rien n'est revenu, on fait une erreur
 if (!$article) {
@@ -54,7 +58,7 @@ if (!$article) {
 }
 
 // 3. Insertion du commentaire
-insertComment($author, $content, $article_id);
+$modelComment->insert($author, $content, $article_id);
 
 // 4. Redirection vers l'article en question :
 header('Location: article.php?id=' . $article_id);

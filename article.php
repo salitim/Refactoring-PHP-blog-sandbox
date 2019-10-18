@@ -45,7 +45,7 @@ $commentaires = $commentaireModel->findAll($article_id);
 
 /**
  * 5. On affiche 
- compact créait un tableau assiocatif (avec sa clef) de donnée.
+ *compact créait un tableau assiocatif (avec sa clef) de donnée.
  */
 render('articles/show',compact(
 	'pageTitle' ,
