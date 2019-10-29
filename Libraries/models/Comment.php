@@ -21,32 +21,6 @@ class Comment extends Model
 	}
 
 	/**
-	 *retourne un commentaire
-	 *
-	 * @param integer $id
-	 * @return array|bool le commentaire sinon false
-	 */
-	public function find($id)
-	{
-		$query = $this->pdo->prepare('SELECT * FROM comments WHERE id = :id');
-		$query->execute(['id' => $id]);
-		$comment = $query->fetch();
-		return $comment;
-	}
-
-	/**
-	 *supprime un commentaire
-	 *
-	 * @param integer $id
-	 * @return void
-	 */
-	public function delete($id)
-	{
-		$query = $this->pdo->prepare('DELETE FROM comments WHERE id = :id');
-		$query->execute(['id' => $id]);
-	}
-
-	/**
 	 *insert un commentaire dans la bdd
 	 *
 	 * @param string $author

@@ -10,13 +10,16 @@
 require_once("Libraries/database.php");
 require_once("Libraries/utilis.php");
 require_once('Libraries/models/Article.php');
+require_once('Libraries/models/User.php');
 
 $model = new Article();
+
+
 /**
  * 2. Récupération des articles
  */
 
-$articles = $model->findAll();
+$articles = $model->findAll("created_at DESC");
 
 /**
  * 3. Affichage
